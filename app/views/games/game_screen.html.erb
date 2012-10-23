@@ -1,0 +1,10 @@
+<% case @game.game_type.name %>
+<% when "Family Feud" %>
+    <%= render :partial => '/games/engines/family_feud' %>
+<% when "Comparisons" %>
+    <%= render :partial => '/games/engines/comparisons' %>
+<% when "Campaign" %>
+    <%= render :partial => '/games/engines/campaign' %>
+<% when "AntiCampaign" %>
+    <%= render :partial => '/games/engines/anticampaign' %>
+<% end %>

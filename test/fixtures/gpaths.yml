@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gnode_id: 1
+  name: MyString
+  markup: MyText
+  next_id: 1
+
+two:
+  gnode_id: 1
+  name: MyString
+  markup: MyText
+  next_id: 1

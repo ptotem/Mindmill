@@ -1,0 +1,24 @@
+<%= content_for :page_header do %>
+    <h1 style="color:white"><%= image_tag "logo.png", :size => "70x70", :style => "vertical-align:middle" %>
+      MindMill</h1>
+<% end %>
+
+<div class="hero-unit hero_panel" style="width:400px;float:right;padding-bottom: 30px;margin-top: -20px;border: 4px solid black;">
+  <h1>The Mind<br> Games</h1>
+
+  <p style="margin-left: 5px;margin-top: 10px;">Are you ready?</p>
+
+  <hr>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <table style="width:100%">
+        <tr>
+          <td>
+            <%= f.label :email %><%= f.email_field :email %>
+            <br>
+            <%= f.label :password %><%= f.password_field :password %>
+          </td>
+          <td><%= f.submit "Sign in", :class=>"btn btn-inverse btn-large pull-right", :style=>"height:100px; width:150px;font-size:24px;" %></td>
+        </tr>
+      </table>
+  <% end %>
+</div>

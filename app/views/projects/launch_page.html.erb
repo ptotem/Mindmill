@@ -1,0 +1,15 @@
+<script type="text/javascript">
+  $(function(){
+      $('p').css("font-size","16px").css("line-height","20px");
+  })
+</script>
+<div class="hero-unit hero_panel" style="width:350px;float:right;padding-bottom: 30px;margin-top: -20px;border: 4px solid black; ">
+  <h1><%= @project.name %></h1>
+  <hr>
+  <div style="font-size: 16px;">
+    <%= raw @project.description %>
+  </div>
+  <br>
+  <%= link_to "Start", launcher_path(@project.games.where('sequence=?',1).first), :class=>"btn btn-inverse btn-large pull-right", :style => "color:white;" %>
+
+</div>

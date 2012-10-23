@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MindMill: <%= @game.game_type.name %>, <%= @game.project.name %></title>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+      $(function () {
+      });
+  </script>
+  <%= yield(:head) %>
+  <style type="text/css">
+      html {
+          background: #ff3019; /* Old browsers */
+          background: -moz-radial-gradient(center, ellipse cover,  #ff3019 0%, #000000 100%); /* FF3.6+ */
+          background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#ff3019), color-stop(100%,#000000)); /* Chrome,Safari4+ */
+          background: -webkit-radial-gradient(center, ellipse cover,  #ff3019 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+          background: -o-radial-gradient(center, ellipse cover,  #ff3019 0%,#000000 100%); /* Opera 12+ */
+          background: -ms-radial-gradient(center, ellipse cover,  #ff3019 0%,#000000 100%); /* IE10+ */
+          background: radial-gradient(ellipse at center,  #ff3019 0%,#000000 100%); /* W3C */
+          filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff3019', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+      }
+
+  </style>
+</head>
+<body>
+<div id="wrapper">
+  <div class="navbar navbar-fixed-top" style="z-index: 999999999">
+    <div class="navbar-inner" style="z-index: 999999999">
+      <div class="container">
+        <a class="brand" href="/">MindMill</a>
+        <ul class="nav">
+          <!--<li><a href="#about" style="color:white;">About</a></li>-->
+          <!--<li><a href="#contact" style="color:white;">Contact</a></li>-->
+        </ul>
+        <div class="pull-right" style="margin-top: 10px;color:white;">
+          <%= current_user.email %>
+          <span class="nav_link">
+              | <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :style => "color:white;" %>
+            </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="content" style="background: transparent;border: 0;">
+      <%#= js extend_gritter :position => :bottom_right %>
+      <%#= js add_gritter(flash[:notice], :image => :success, :title => "Notice", :sticky => false, :time => 2000) %>
+      <%#= js add_gritter(flash[:alert], :image => :warning, :title => "Alert!", :sticky => false, :time => 2000) %>
+      <%= yield %>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+

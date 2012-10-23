@@ -1,0 +1,127 @@
+<%= content_for :head do %>
+    <style type="text/css">
+        body {
+            margin: 0 auto;
+            margin-top: 20px;
+            width: 960px;
+            /*background: url('/assets/goldbackdrop.jpg') no-repeat;*/
+            /*background-size: 100% 100%;*/
+            background: transparent;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        a, a:link, a:visited, .btn {
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .btn-custom {
+            font-size: 24px;
+            color: white;
+            height: 24px;
+            width: 220px;
+        }
+
+        #scoreboard {
+            margin-left: 40px;
+            margin-top: 30px;
+            width: 410px;
+            height: 120px;
+
+        }
+
+        #scoreboard td {
+            padding: 2px;
+        }
+
+        .namebox {
+            font-size: 14px;
+            color: white;
+            padding: 10px;
+            background: #111;
+            width: 120px;
+
+        }
+
+        .pollbox {
+            font-size: 18px;
+            color: black;
+            padding: 10px;
+            background: #eee;
+            width: 30px;
+
+        }
+    </style>
+
+<% end %>
+<div style="font-size:48px;width:90%;text-align: right;line-height: 64px;margin-bottom: 20px;color:white;">
+  <span style="float:right;">Comparisons</span>
+
+  <div style="background: #ffa500; width:150px; margin-top: 70px;margin-right: -280px;padding:2px;float:right;border-radius: 10px;border: 2px solid black;text-align: center;">
+    <h2 id="scorebox">Score:
+      <span id="score">
+        <%= @game.project.games.map { |g| g.scores.where('user_id=?', current_user.id).first.value }.sum %>
+      </span>
+    </h2>
+  </div>
+</div>
+
+<%= image_tag @gnode.avatar.url(:original), :style => "width:500px;float:left;margin-top:-50px" %>
+<%= image_tag "host2.png", :style => "float:left;margin-left:-80px;" %>
+<div style="float:left;margin-top: -80px;margin-left: 20px;">
+  <% @gnode.gpaths.each_with_index do |gpath, index| %>
+      <%= link_to gpath.name, "#", :id => "current#{index}", :class => "btn btn-large btn-warning btn-custom choices" %>
+  <% end %>
+  <%= link_to "Next", "#", :id => "next", :class => "btn btn-large btn-warning btn-custom choices", :style => "display: none" %>
+
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $.ajaxSetup({
+            beforeSend:function (xhr) {
+                xhr.setRequestHeader('X-CSRF-Token',
+                        $('meta[name="csrf-token"]').attr('content'));
+            }
+        });
+
+        $('.choices').click(function () {
+            add_response($(this).text(),<%= @gnode.id %>);
+        });
+    });
+
+    function add_response(name,pp) {
+        var data = {selection:[], nodeadd:[]};
+        data["selection"].push(name);
+        data["nodeadd"].push(pp);
+        $.ajax({
+            url:"<%= comparison_selection_path %>",
+            type:"post",
+            data:JSON.stringify(data),
+            contentType:"application/json",
+            success:function (returning_data) {
+                var nextid = returning_data.split("|")[0];
+                var score = returning_data.split("|")[1];
+                var toggler = returning_data.split("|")[2];
+                $('#score').html(score);
+                $('.choices').hide();
+                $('#next').show();
+                if (toggler == "0") {
+                    $('#next').attr("href", "/game/launch/" + nextid);
+                } else {
+                    $('#next').attr("href", "/game/<%= @game.id %>/" + nextid);
+                }
+                $('#next').animate({
+                    width:"270px",
+                    height:"60px",
+                    fontSize:"48px",
+                    color:"white"
+                }, 2000);
+            }
+        });
+    }
+</script>

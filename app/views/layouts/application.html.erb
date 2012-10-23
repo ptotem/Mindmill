@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MindMill</title>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script type="text/javascript">
+      $(function() {
+      });
+  </script>
+  <%= yield(:head) %>
+</head>
+<body>
+<div id="wrapper">
+  <div class="navbar navbar-fixed-top" style="z-index: 999999999">
+    <div class="navbar-inner" style="z-index: 999999999">
+      <div class="container">
+        <a class="brand" href="/">MindMill</a>
+        <ul class="nav">
+          <!--<li><a href="#about" style="color:white;">About</a></li>-->
+          <!--<li><a href="#contact" style="color:white;">Contact</a></li>-->
+        </ul>
+
+        <% if !user_signed_in? %>
+            <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class =>"pull-right navbar-form"}) do |f| %>
+                <%= f.email_field :email, :class=>"input-large", :placeholder=>"Email" %>
+                <%= f.password_field :password, :class=>"input-medium", :placeholder=>"Password" %>
+                <%= f.submit "Sign In", :class=>"btn btn-primary" %>
+            <% end %>
+        <% else %>
+            <div class="pull-right" style="margin-top: 10px;color:white;">
+              <%= current_user.email %>
+              <span class="nav_link">
+              | <%= link_to "Sign out", destroy_user_session_path, :method => :delete, :style=>"color:white;" %>
+            </span>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+
+    <div class="page-header" style="height:120px;border-radius: 10px"></div>
+    <div style="position:absolute;margin-top: -120px;" class="span12">
+      <h2>  <%= yield(:page_header) %></h2>
+    </div>
+  </div>
+  <div class="container">
+
+    <div class="content" style="background: transparent;border: 0;">
+      <%= js extend_gritter :position => :bottom_right %>
+      <%= js add_gritter(flash[:notice], :image => :success, :title => "Notice", :sticky => false, :time => 2000) %>
+      <%= js add_gritter(flash[:alert], :image => :warning, :title => "Alert!", :sticky => false, :time => 2000) %>
+      <%= yield %>
+    </div>
+
+    <% if request.fullpath=="/" %>
+
+
+
+    <% end %>
+  </div>
+</div>
+
+</body>
+</html>
+
+
+

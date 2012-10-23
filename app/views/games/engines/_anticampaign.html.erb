@@ -1,0 +1,323 @@
+<%= content_for :head do %>
+    <script type="text/javascript">
+        $(function () {
+
+            $.ajaxSetup({
+                beforeSend:function (xhr) {
+                    xhr.setRequestHeader('X-CSRF-Token',
+                            $('meta[name="csrf-token"]').attr('content'));
+                }
+            });
+
+            $('#slider').anythingSlider({
+                buildArrows:false,
+                delay:1000,
+                onSlideComplete:function (slider) {
+                    var data = {selection:[], answer:[]};
+                    data["selection"].push(slider.currentPage);
+                    data["answer"].push(<%= @answers[3].id %>);
+                    $.ajax({
+                        url:"<%= image_selection_path %>",
+                        type:"post",
+                        data:JSON.stringify(data),
+                        contentType:"application/json",
+                        success:function (returning_data) {
+                        }
+                    });
+
+                }
+
+            });
+            $('#slider2').anythingSlider({
+                buildArrows:false,
+                onSlideComplete:function (slider) {
+                    var data = {selection:[], answer:[]};
+                    data["selection"].push(slider.currentPage);
+                    data["answer"].push(<%= @answers[4].id %>);
+                    $.ajax({
+                        url:"<%= image_selection_path %>",
+                        type:"post",
+                        data:JSON.stringify(data),
+                        contentType:"application/json",
+                        success:function (returning_data) {
+                        }
+                    });
+
+                }
+
+            });
+
+        })
+    </script>
+    <style>
+        #slider {
+            width: 240px;
+            height: 180px;
+
+        }
+
+            /* images with caption */
+        #slider img {
+            width: 180px;
+            height: 280px;
+            border-radius: 10px;
+        }
+
+            /* position the panels so the captions appear correctly */
+        #slider .panel {
+            position: relative;
+        }
+
+            /* captions */
+        #slider .caption-top, #slider .caption-right,
+        #slider .caption-bottom, #slider .caption-left {
+            background: #000;
+            color: #fff;
+            padding: 10px;
+            margin: 0;
+            position: relative;
+            z-index: 10;
+            opacity: .8;
+            filter: alpha(opacity = 80);
+        }
+
+            /*** Set Slider dimensions here! Version 1.7+ ***/
+        #slider {
+            /*background: white;*/
+            /*width: 300px;*/
+            /*height: 300px;*/
+            list-style: none;
+        }
+
+        #slider li {
+            position: relative;
+        }
+
+
+    </style>
+
+    <style>
+        #slider2 {
+            width: 100px;
+            height: 100px;
+
+        }
+
+            /* images with caption */
+        #slider2 img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+        }
+
+            /* position the panels so the captions appear correctly */
+        #slider2 .panel {
+            position: relative;
+        }
+
+            /* captions */
+        #slider2 .caption-top, #slider2 .caption-right,
+        #slider2 .caption-bottom, #slider2 .caption-left {
+            background: #000;
+            color: #fff;
+            padding: 10px;
+            margin: 0;
+            position: relative;
+            z-index: 10;
+            opacity: .8;
+            filter: alpha(opacity = 80);
+        }
+
+            /*** Set Slider dimensions here! Version 1.7+ ***/
+        #slider2 {
+            /*background: white;*/
+            /*width: 300px;*/
+            /*height: 300px;*/
+            list-style: none;
+        }
+
+        #slider2 li {
+            position: relative;
+        }
+
+
+    </style>
+
+
+    <style type="text/css">
+
+        body {
+            background: transparent;
+        }
+
+        #poster {
+            margin-top: 20px;
+            position: relative;
+            float: right;
+            width: 500px;
+            height: 560px;
+            border: 6px solid black;
+            border-radius: 10px;
+            background: black;
+        }
+
+        .section {
+            position: absolute;
+            padding: 10px;
+        }
+
+        #main {
+            left: 0px;
+            top: 10px;
+            width: 100%;
+            height: 400px;
+            background-image: url('/assets/NO.jpg');
+            background-size: 100% 100%;
+        }
+
+        #title {
+            left: -20px;
+            bottom: 50px;
+            width: 440px;
+            height: 80px;
+        }
+
+        #main_pic {
+            right: 90px;
+            top: 15px;
+            width: 220px;
+            height: 340px;
+        }
+
+        #detailed {
+            left: 30px;
+            top: 190px;
+            width: 350px;
+            height: 120px;
+            background: #ff8b4c;
+            border: solid 1px black;
+            border-radius: 10px;
+            padding-top: 30px;
+            padding-left: 10px;
+            padding-right: 15px;
+        }
+
+        #protest {
+            position: absolute;
+            top: 100px;
+            left: 20px;
+            font-size: 40px;
+            color: white;
+            font-weight: bolder;
+        }
+
+        #done {
+            position: absolute;
+            bottom: 50px;
+            right: 60px;
+            font-size: 30px;
+            color: white;
+            font-weight: bolder;
+        }
+
+    </style>
+<% end %>
+
+<%= link_to "Done", "/game/6", :id=>"done", :class=>"btn btn-danger btn-large" %>
+
+<div id="left" style="float:left;width:350px;">
+  <br>
+  <table>
+    <tr>
+      <td style="width:170px;"><%= image_tag "host3.png", :style => "width:150px;" %></td>
+      <td style="color:white;">
+        <h1 style="float: left;color: white;font-weight: bolder;"><%= @game.game_type.name %></h1>
+        <br>
+        <br>
+        <br>
+        They are launching the product described below in the market. We don't like it. Can you help us tell the world
+        why it is not a good idea?
+        <br>
+        <br>
+        Build the poster on the left to explain why this product is a not a good idea. And if it is one of the top ten
+        picks of our team, we will add 350 points to your score.
+
+        <br>
+        <br>
+      </td>
+    </tr>
+    <tr style="border: solid 2px black;background: #f2cb50;border-radius: 10px;">
+      <td colspan="2" style="padding: 20px;border-radius: 10px;">
+        <h1>
+          <%= @title %>
+          <%= image_tag @game.avatar.url(:original), :style => "width:50px;vertical-align:middle;float:right;" %></h1>
+        <%= @catchphrase %>
+      </td>
+    </tr>
+    <tr style="height:10px;"></tr>
+    <tr style="border: solid 2px black;background: #ffd6a6;border-radius: 10px;">
+      <td colspan="2" style="padding: 10px;border-radius: 10px;text-align: center;font-size: 18px;">
+        <%= raw @body %>
+      </td>
+    </tr>
+  </table>
+
+
+  <p style="width:270px;float: left;">
+
+  </p>
+</div>
+<div id="poster">
+  <div id="main">
+    <div id="protest">
+      <%= image_tag "protesters.png", :style => "width:200px;" %>
+    </div>
+    <div id="detailed" class="section">
+      <%= editable_field @answers[2], :matter, :type => 'textarea', :placeholder => "Click to add your anti-campaign points", :onblur => 'submit', :rows => "13" %>
+    </div>
+    <div id="main_pic" class="section">
+      <ul id="slider">
+        <li><%= image_tag "good/1.jpg" %></li>
+        <li><%= image_tag "good/2.jpg" %></li>
+        <li><%= image_tag "good/3.jpg" %></li>
+        <li><%= image_tag "good/4.jpg" %></li>
+        <li><%= image_tag "good/5.gif" %></li>
+        <li><%= image_tag "good/6.jpg" %></li>
+        <li><%= image_tag "good/7.jpg" %></li>
+        <li><%= image_tag "good/8.jpg" %></li>
+        <li><%= image_tag "good/9.jpg" %></li>
+        <li><%= image_tag "good/10.jpg" %></li>
+        <li><%= image_tag "good/11.jpg" %></li>
+        <li><%= image_tag "good/12.png" %></li>
+        <li><%= image_tag "good/13.jpg" %></li>
+        <li><%= image_tag "good/14.jpg" %></li>
+        <li><%= image_tag "good/15.jpeg" %></li>
+        <li><%= image_tag "good/16.jpg" %></li>
+        <li><%= image_tag "good/17.gif" %></li>
+      </ul>
+    </div>
+    <div id="title" class="section">
+      <div style="float:left;margin-right: 10px;">
+        <ul id="slider2">
+          <li><%= image_tag "emoticons/1.png" %></li>
+          <li><%= image_tag "emoticons/2.png" %></li>
+          <li><%= image_tag "emoticons/3.png" %></li>
+          <li><%= image_tag "emoticons/4.png" %></li>
+          <li><%= image_tag "emoticons/5.png" %></li>
+          <li><%= image_tag "emoticons/6.png" %></li>
+          <li><%= image_tag "emoticons/7.png" %></li>
+          <li><%= image_tag "emoticons/8.png" %></li>
+          <li><%= image_tag "emoticons/9.png" %></li>
+          <li><%= image_tag "emoticons/10.png" %></li>
+          <li><%= image_tag "emoticons/11.png" %></li>
+        </ul>
+      </div>
+      <div style="float:left;margin-left: -20px;margin-top: 20px;">
+        <h2 style="color:white;"><%= editable_field @answers[0], :matter, :placeholder => "Click to add a title", :onblur => 'submit' %></h2>
+
+        <h3 style="color:white;"><%= editable_field @answers[1], :matter, :placeholder => "Click to add a slogan", :onblur => 'submit' %></h3>
+      </div>
+    </div>
+
+  </div>
+</div>
