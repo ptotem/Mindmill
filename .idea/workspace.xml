@@ -52,7 +52,7 @@
       <file leaf-file-name="_family_feud.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/games/engines/_family_feud.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="83" column="30" selection-start="2636" selection-end="2636" vertical-scroll-proportion="0.65656567">
+            <state line="82" column="121" selection-start="2603" selection-end="2603" vertical-scroll-proportion="0.6060606">
               <folding />
             </state>
           </provider>
@@ -1177,7 +1177,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/games/engines/_family_feud.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="30" selection-start="2636" selection-end="2636" vertical-scroll-proportion="0.65656567">
+        <state line="82" column="121" selection-start="2603" selection-end="2603" vertical-scroll-proportion="0.6060606">
           <folding />
         </state>
       </provider>
