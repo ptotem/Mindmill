@@ -58,10 +58,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_campaign.html.erb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_campaign.html.erb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/games/engines/_campaign.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="242" column="64" selection-start="6369" selection-end="6369" vertical-scroll-proportion="0.7979798">
+            <state line="233" column="44" selection-start="5902" selection-end="5917" vertical-scroll-proportion="-4.25">
               <folding />
             </state>
           </provider>
@@ -85,10 +85,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_anticampaign.html.erb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_anticampaign.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/games/engines/_anticampaign.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="243" column="64" selection-start="6222" selection-end="6489" vertical-scroll-proportion="-10.0">
+            <state line="233" column="44" selection-start="5909" selection-end="5909" vertical-scroll-proportion="0.3030303">
               <folding />
             </state>
           </provider>
@@ -139,8 +139,8 @@
         <option value="$PROJECT_DIR$/app/models/project_user.rb" />
         <option value="$PROJECT_DIR$/app/models/game.rb" />
         <option value="$PROJECT_DIR$/app/views/games/engines/_family_feud.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/games/engines/_anticampaign.html.erb" />
         <option value="$PROJECT_DIR$/app/views/games/engines/_campaign.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/games/engines/_anticampaign.html.erb" />
       </list>
     </option>
   </component>
@@ -153,7 +153,7 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-1" />
-    <option name="y" value="-4" />
+    <option name="y" value="764" />
     <option name="width" value="1368" />
     <option name="height" value="773" />
   </component>
@@ -995,7 +995,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-4" width="1368" height="773" extended-state="6" />
+    <frame x="-1" y="764" width="1368" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1168,16 +1168,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/games/engines/_anticampaign.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/games/engines/_campaign.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="243" column="64" selection-start="6222" selection-end="6489" vertical-scroll-proportion="-10.0">
+        <state line="233" column="44" selection-start="5902" selection-end="5917" vertical-scroll-proportion="-4.25">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/games/engines/_campaign.html.erb">
+    <entry file="file://$PROJECT_DIR$/app/views/games/engines/_anticampaign.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="242" column="64" selection-start="6369" selection-end="6369" vertical-scroll-proportion="0.7979798">
+        <state line="233" column="44" selection-start="5909" selection-end="5909" vertical-scroll-proportion="0.3030303">
           <folding />
         </state>
       </provider>
