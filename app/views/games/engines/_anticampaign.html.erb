@@ -11,7 +11,7 @@
 
             $('#slider').anythingSlider({
                 buildArrows:false,
-                delay:1000,
+                delay:2000,
                 onSlideComplete:function (slider) {
                     var data = {selection:[], answer:[]};
                     data["selection"].push(slider.currentPage);
@@ -30,6 +30,7 @@
             });
             $('#slider2').anythingSlider({
                 buildArrows:false,
+                delay:2000,
                 onSlideComplete:function (slider) {
                     var data = {selection:[], answer:[]};
                     data["selection"].push(slider.currentPage);
